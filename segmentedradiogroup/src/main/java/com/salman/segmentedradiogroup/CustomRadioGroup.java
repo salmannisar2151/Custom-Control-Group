@@ -115,7 +115,7 @@ public class CustomRadioGroup extends RadioGroup {
         else if (posValue == MID_ITEM_VALUE)
             shape.setCornerRadii(new float[]{0, 0, 0, 0, 0, 0, 0, 0});
 
-        if (getLayoutDirection() == LAYOUT_DIRECTION_LTR) {
+        if (getResources().getConfiguration().getLayoutDirection() == LAYOUT_DIRECTION_LTR) {
             if (posValue == START_ITEM_VALUE)
                 shape.setCornerRadii(new float[]{cornerRadius, cornerRadius, 0, 0, 0, 0, cornerRadius, cornerRadius});
             else if (posValue == END_ITEM_VALUE)
