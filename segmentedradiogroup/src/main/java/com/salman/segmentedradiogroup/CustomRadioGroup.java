@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class CustomRadioGroup2 extends RadioGroup {
+public class CustomRadioGroup extends RadioGroup {
     private final int SINGLE_ITEM_VALUE = 0;
     private final int START_ITEM_VALUE = 1;
     private final int MID_ITEM_VALUE = 2;
@@ -36,20 +36,20 @@ public class CustomRadioGroup2 extends RadioGroup {
         setDefaultValues();
     }
 
-    public CustomRadioGroup2(Context context, AttributeSet attrs) {
+    public CustomRadioGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         init();
 
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomRadioGroup2, 0, 0);
-        sBackgroundColor = typedArray.getColor(R.styleable.CustomRadioGroup2_backgroundColor, sBackgroundColor);
-        uBorderColor = typedArray.getColor(R.styleable.CustomRadioGroup2_borderColor, uBorderColor);
-        strokeWidth = typedArray.getInt(R.styleable.CustomRadioGroup2_borderWidth, strokeWidth);
-        colors[0] = typedArray.getColor(R.styleable.CustomRadioGroup2_selectedTextColor, colors[0]);
-        colors[1] = typedArray.getColor(R.styleable.CustomRadioGroup2_unselectedTextColor, colors[1]);
-        cornerRadius = typedArray.getInt(R.styleable.CustomRadioGroup2_cornerRadius, cornerRadius);
-        padding = typedArray.getDimensionPixelSize(R.styleable.CustomRadioGroup2_radioButtonPadding, padding);
-        isScrollable = typedArray.getBoolean(R.styleable.CustomRadioGroup2_scrollable, isScrollable);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomRadioGroup, 0, 0);
+        sBackgroundColor = typedArray.getColor(R.styleable.CustomRadioGroup_backgroundColor, sBackgroundColor);
+        uBorderColor = typedArray.getColor(R.styleable.CustomRadioGroup_borderColor, uBorderColor);
+        strokeWidth = typedArray.getInt(R.styleable.CustomRadioGroup_borderWidth, strokeWidth);
+        colors[0] = typedArray.getColor(R.styleable.CustomRadioGroup_selectedTextColor, colors[0]);
+        colors[1] = typedArray.getColor(R.styleable.CustomRadioGroup_unselectedTextColor, colors[1]);
+        cornerRadius = typedArray.getInt(R.styleable.CustomRadioGroup_cornerRadius, cornerRadius);
+        padding = typedArray.getDimensionPixelSize(R.styleable.CustomRadioGroup_radioButtonPadding, padding);
+        isScrollable = typedArray.getBoolean(R.styleable.CustomRadioGroup_scrollable, isScrollable);
 
         typedArray.recycle();
 

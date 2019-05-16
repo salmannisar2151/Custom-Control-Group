@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.salman.segmentedradiogroup.CustomRadioGroup2;
+import com.salman.segmentedradiogroup.CustomRadioGroup;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    CustomRadioGroup2 customRadioGroup;
+    CustomRadioGroup customRadioGroup;
     EditText edtTitle, edtWidth;
     Button btnAdd, btnRemove;
     ArrayList<Integer> colors;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="CustomRadioGroup2">
+    <declare-styleable name="CustomRadioGroup">
         <attr name="backgroundColor" format="reference" />
         <attr name="borderColor" format="reference" />
         <attr name="borderWidth" format="integer" />
