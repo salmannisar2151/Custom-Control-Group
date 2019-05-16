@@ -2,14 +2,14 @@
 <resources>
 
     <declare-styleable name="CustomRadioGroup">
-        <attr name="backgroundColor" format="reference" />
-        <attr name="borderColor" format="reference" />
-        <attr name="borderWidth" format="integer" />
-        <attr name="selectedTextColor" format="reference" />
-        <attr name="unselectedTextColor" format="reference" />
-        <attr name="cornerRadius" format="integer" />
-        <attr name="radioButtonPadding" format="dimension" />
-        <attr name="scrollable" format="boolean" />
+        <attr name="custom_backgroundColor" format="reference" />
+        <attr name="custom_borderColor" format="reference" />
+        <attr name="custom_borderWidth" format="integer" />
+        <attr name="custom_selectedTextColor" format="reference" />
+        <attr name="custom_unselectedTextColor" format="reference" />
+        <attr name="custom_cornerRadius" format="integer" />
+        <attr name="custom_radioButtonPadding" format="dimension" />
+        <attr name="custom_scrollable" format="boolean" />
     </declare-styleable>
 
 </resources>

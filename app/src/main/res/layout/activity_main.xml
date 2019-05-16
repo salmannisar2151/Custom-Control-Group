@@ -16,15 +16,15 @@
 
         <RadioButton
             style="@style/RadioButtonStyle"
-            android:text="Haider" />
+            android:text="RadioButton1" />
 
         <RadioButton
             style="@style/RadioButtonStyle"
-            android:text="Haider" />
+            android:text="RadioButton2" />
 
         <RadioButton
             style="@style/RadioButtonStyle"
-            android:text="Haider" />
+            android:text="RadioButton3" />
 
     </com.salman.segmentedradiogroup.CustomRadioGroup>
 

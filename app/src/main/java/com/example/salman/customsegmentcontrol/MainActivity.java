@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(edtTitle.getText()))
+                if (!TextUtils.isEmpty(edtTitle.getText())) {
                     customRadioGroup.addRadioButton(edtTitle.getText().toString());
+                    edtTitle.setText("");
+                }
                 else
                     Toast.makeText(getApplicationContext(), "Please enter title", Toast.LENGTH_SHORT).show();
             }
