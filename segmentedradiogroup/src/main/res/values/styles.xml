@@ -1,0 +1,51 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SingleItemStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/single_radio_item_selected</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="StartItemStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/selector_left_radio_item</item>
+        <item name="android:textColor">@drawable/selector_textview</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="MidItemStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/selector_mid_radio_item</item>
+        <item name="android:textColor">@drawable/selector_textview</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="EndItemStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/selector_end_radio_item</item>
+        <item name="android:textColor">@drawable/selector_textview</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="RadioButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/radio_button_padding</item>
+    </style>
+
+
+</resources>

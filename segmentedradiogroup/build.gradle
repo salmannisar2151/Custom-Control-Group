@@ -1,0 +1,156 @@
+apply plugin: 'com.android.library'
+//lib
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+// lib
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// lib
+ext {
+    bintrayRepo = 'Custom-Control-Group'
+    bintrayName = 'customcontrolgroup'
+
+    publishedGroupId = 'ua.org.tenletters.widget'
+    libraryName = 'Custom-Control-Group'
+    artifact = 'customcontrolgroup'
+
+    libraryDescription = 'This view is a container that supports diagonal scroll and fling gesture. It is based on AOSP HorizontalScrollView.'
+
+    siteUrl = 'https://github.com/salmannisar2151/Custom-Control-Group'
+    gitUrl = 'https://github.com/salmannisar2151/Custom-Control-Group.git'
+
+    libraryVersion = '0.3.3'
+
+    developerId = 'salmannisar2151'
+    developerName = 'Salman Nisar'
+    developerEmail = 'f148029@nu.edu.pk'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+// lib
+
+group = 'ua.org.tenletters.widget' // to change
+version = '0.3.3'
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId 'ua.org.tenletters.widget'
+            artifactId 'customcontrolgroup'
+
+            name 'Custom-Control-Group'
+            description 'This view is a container that supports diagonal scroll and fling gesture. It is based on AOSP HorizontalScrollView.'
+            url 'https://github.com/salmannisar2151/Custom-Control-Group'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+            developers {
+                developer {
+                    id 'salmannisar2151'
+                    name 'Salman Nisar'
+                    email 'f148029@nu.edu.pk'
+                }
+            }
+            scm {
+                connection 'https://github.com/salmannisar2151/Custom-Control-Group.git'
+                developerConnection 'https://github.com/salmannisar2151/Custom-Control-Group.git'
+                url 'https://github.com/salmannisar2151/Custom-Control-Group'
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'Custom-Control-Group'
+        name = 'customcontrolgroup'
+        desc = 'This view is a container that supports diagonal scroll and fling gesture. It is based on AOSP HorizontalScrollView.'
+        websiteUrl = 'https://github.com/salmannisar2151/Custom-Control-Group'
+        vcsUrl = 'https://github.com/salmannisar2151/Custom-Control-Group.git'
+        licenses = ["Apache-2.0"]
+        dryRun = false
+        publish = true
+        override = false
+        publicDownloadNumbers = true
+        version {
+            desc = 'This view is a container that supports diagonal scroll and fling gesture. It is based on AOSP HorizontalScrollView.'
+        }
+    }
+}

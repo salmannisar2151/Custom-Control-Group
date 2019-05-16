@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomRadioGroup2">
+        <attr name="backgroundColor" format="reference" />
+        <attr name="borderColor" format="reference" />
+        <attr name="borderWidth" format="integer" />
+        <attr name="selectedTextColor" format="reference" />
+        <attr name="unselectedTextColor" format="reference" />
+        <attr name="cornerRadius" format="integer" />
+        <attr name="radioButtonPadding" format="dimension" />
+        <attr name="scrollable" format="boolean" />
+    </declare-styleable>
+
+</resources>

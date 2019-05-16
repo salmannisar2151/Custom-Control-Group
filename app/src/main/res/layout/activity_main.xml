@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".MainActivity">
+
+    <com.salman.segmentedradiogroup.CustomRadioGroup2
+        android:id="@+id/rg_custom_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RadioButton
+            style="@style/RadioButtonStyle"
+            android:text="Haider" />
+
+        <RadioButton
+            style="@style/RadioButtonStyle"
+            android:text="Haider" />
+
+        <RadioButton
+            style="@style/RadioButtonStyle"
+            android:text="Haider" />
+
+    </com.salman.segmentedradiogroup.CustomRadioGroup2>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_custom_group"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/btn_remove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Remove" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="background"
+            android:text="Background" />
+
+        <Button
+            android:id="@+id/btn_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="border"
+            android:text="Border" />
+
+        <Button
+            android:id="@+id/btn_text_color_selecetd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="textSelected"
+            android:text="Text Selected" />
+
+        <Button
+            android:id="@+id/btn_text_color_unselecetc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="textUnSelected"
+            android:text="Text Unselected" />
+
+        <EditText
+            android:id="@+id/edt_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="strokeWidth"
+            android:text="StrokeWidth" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

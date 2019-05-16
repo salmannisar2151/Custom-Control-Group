@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:shape="rectangle">-->
+    <!--<corners-->
+        <!--android:bottomRightRadius="@dimen/button_corner_radius"-->
+        <!--android:topRightRadius="@dimen/button_corner_radius" />-->
+    <!--<solid android:color="@color/transparent" />-->
+    <!--<stroke-->
+        <!--android:width="2dp"-->
+        <!--android:color="@color/colorPrimary" />-->
+<!--</shape>-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_unselected"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="-3dp"
+        android:top="0dp">
+        <shape android:shape="rectangle">
+            <corners
+            android:bottomLeftRadius="@dimen/button_corner_radius"
+            android:topLeftRadius="@dimen/button_corner_radius" />
+            <solid android:color="@color/transparent" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/colorPrimary" />
+        </shape>
+    </item>
+</layer-list>
