@@ -29,34 +29,12 @@ public class CustomRadioGroup extends RadioGroup {
     private int[][] states;
     private int[] colors;
     private boolean isScrollable;
+
     private StateListDrawable singleItemSelector, startItemSelector, midItemSelector, endItemSelector;
 
     private void init() {
         setOrientation(HORIZONTAL);
         setDefaultValues();
-    }
-
-    public CustomRadioGroup(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
-        init();
-
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomRadioGroup, 0, 0);
-        sBackgroundColor = typedArray.getColor(R.styleable.CustomRadioGroup_custom_backgroundColor, sBackgroundColor);
-        uBorderColor = typedArray.getColor(R.styleable.CustomRadioGroup_custom_borderColor, uBorderColor);
-        strokeWidth = typedArray.getInt(R.styleable.CustomRadioGroup_custom_borderWidth, strokeWidth);
-        colors[0] = typedArray.getColor(R.styleable.CustomRadioGroup_custom_selectedTextColor, colors[0]);
-        colors[1] = typedArray.getColor(R.styleable.CustomRadioGroup_custom_unselectedTextColor, colors[1]);
-        cornerRadius = typedArray.getInt(R.styleable.CustomRadioGroup_custom_cornerRadius, cornerRadius);
-        padding = typedArray.getDimensionPixelSize(R.styleable.CustomRadioGroup_custom_radioButtonPadding, padding);
-        isScrollable = typedArray.getBoolean(R.styleable.CustomRadioGroup_custom_scrollable, isScrollable);
-
-        typedArray.recycle();
-
-        setAllSelectors();
-
-        //  updateAllRadioButtonsBackground();
-
     }
 
     private void setAllSelectors() {
@@ -74,10 +52,9 @@ public class CustomRadioGroup extends RadioGroup {
                 createItemSingle(false, END_ITEM_VALUE));
     }
 
-
     private void setDefaultValues() {
-        sBackgroundColor = R.color.colorPrimary;
-        uBorderColor = R.color.colorPrimary;
+        sBackgroundColor = getResources().getColor(R.color.colorPrimary);
+        uBorderColor = getResources().getColor(R.color.colorPrimary);
         strokeWidth = 5;
         cornerRadius = 5;
         padding = getResources().getDimensionPixelSize(R.dimen.radio_button_padding);
@@ -95,29 +72,12 @@ public class CustomRadioGroup extends RadioGroup {
         colorStateList = new ColorStateList(states, colors);
     }
 
-    public void addRadioButton(String title) {
-        setAllSelectors();
-        if (!isScrollable)
-            setWeightSum(getChildCount() + 1);
-        if (getChildCount() == 0)
-            addRadioButton(title, singleItemSelector, colorStateList);
-        else {
-            if (getChildCount() == 1)
-                updateLastRBAdded((RadioButton) getChildAt(getChildCount() - 1), startItemSelector);
-            else
-                updateLastRBAdded((RadioButton) getChildAt(getChildCount() - 1), midItemSelector);
-
-            addRadioButton(title, endItemSelector, colorStateList);
-        }
-
-    }
-
     private void updateLastRBAdded(RadioButton radioButton, StateListDrawable currentSelector) {
         radioButton.setTextColor(colorStateList);
         radioButton.setBackground(currentSelector);
     }
 
-    public void addRadioButton(String title, StateListDrawable background, ColorStateList color) {
+    private RadioButton addRadioButton(String title, StateListDrawable background, ColorStateList color) {
         RadioButton radioButton = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button_item, null, false);
         LinearLayout.LayoutParams p;
         if (isScrollable) {
@@ -133,9 +93,10 @@ public class CustomRadioGroup extends RadioGroup {
         radioButton.setPadding(padding, padding, padding, padding);
         radioButton.setText(title);
         addView(radioButton);
+        return radioButton;
     }
 
-    public StateListDrawable createSelector(GradientDrawable selected, GradientDrawable unselected) {
+    private StateListDrawable createSelector(GradientDrawable selected, GradientDrawable unselected) {
         StateListDrawable res = new StateListDrawable();
 
         res.addState(new int[]{android.R.attr.state_checked}, selected);
@@ -145,7 +106,7 @@ public class CustomRadioGroup extends RadioGroup {
     }
 
     @SuppressLint("NewApi")
-    public GradientDrawable createItemSingle(boolean selected, int posValue) {
+    private GradientDrawable createItemSingle(boolean selected, int posValue) {
         GradientDrawable shape = new GradientDrawable();
         shape.setShape(GradientDrawable.RECTANGLE);
 
@@ -210,13 +171,56 @@ public class CustomRadioGroup extends RadioGroup {
         }
     }
 
+    public CustomRadioGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.context = context;
+        init();
+
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomRadioGroup, 0, 0);
+        sBackgroundColor = typedArray.getColor(R.styleable.CustomRadioGroup_custom_backgroundColor, sBackgroundColor);
+        uBorderColor = typedArray.getColor(R.styleable.CustomRadioGroup_custom_borderColor, uBorderColor);
+        strokeWidth = typedArray.getInt(R.styleable.CustomRadioGroup_custom_borderWidth, strokeWidth);
+        colors[0] = typedArray.getColor(R.styleable.CustomRadioGroup_custom_selectedTextColor, colors[0]);
+        colors[1] = typedArray.getColor(R.styleable.CustomRadioGroup_custom_unselectedTextColor, colors[1]);
+        cornerRadius = typedArray.getInt(R.styleable.CustomRadioGroup_custom_cornerRadius, cornerRadius);
+        padding = typedArray.getDimensionPixelSize(R.styleable.CustomRadioGroup_custom_radioButtonPadding, padding);
+        isScrollable = typedArray.getBoolean(R.styleable.CustomRadioGroup_custom_scrollable, isScrollable);
+
+        typedArray.recycle();
+
+        setAllSelectors();
+
+    }
+
+    public RadioButton addRadioButton(String title, int id) {
+        RadioButton radioButton = addRadioButton(title);
+        radioButton.setId(id);
+        return radioButton;
+    }
+
+    public RadioButton addRadioButton(String title) {
+        setAllSelectors();
+        if (!isScrollable)
+            setWeightSum(getChildCount() + 1);
+        if (getChildCount() == 0)
+            return addRadioButton(title, singleItemSelector, colorStateList);
+        else {
+            if (getChildCount() == 1)
+                updateLastRBAdded((RadioButton) getChildAt(getChildCount() - 1), startItemSelector);
+            else
+                updateLastRBAdded((RadioButton) getChildAt(getChildCount() - 1), midItemSelector);
+
+            return addRadioButton(title, endItemSelector, colorStateList);
+        }
+
+
+    }
 
     public void setsTextColor(int sTextColor) {
         setAllSelectors();
         colors[0] = getResources().getColor(sTextColor);
         updateAllRadioButtonsBackground();
     }
-
 
     public void setuTextColor(int uTextColor) {
         setAllSelectors();
@@ -239,5 +243,23 @@ public class CustomRadioGroup extends RadioGroup {
     public void setStrokeWidth(int strokeWidth) {
         this.strokeWidth = strokeWidth;
         updateAllRadioButtonsBackground();
+    }
+
+
+    public void setCornerRadius(int cornerRadius) {
+        this.cornerRadius = cornerRadius;
+        updateAllRadioButtonsBackground();
+    }
+
+    public void setChecked(int position) {
+        if (position < getChildCount()) {
+            ((RadioButton) getChildAt(position)).setChecked(true);
+        }
+    }
+
+    public void removeRadioButtonAt(int position) {
+        if (position < getChildCount()) {
+            removeViewAt(position);
+        }
     }
 }

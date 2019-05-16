@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     CustomRadioGroup customRadioGroup;
-    EditText edtTitle, edtWidth;
+    EditText edtTitle, edtWidth, edtCorner;
     Button btnAdd, btnRemove;
     ArrayList<Integer> colors;
 
@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setColors();
         customRadioGroup = findViewById(R.id.rg_custom_group);
         customRadioGroup.updateAllRadioButtonsBackground();
+
         btnAdd = findViewById(R.id.btn_add);
         btnRemove = findViewById(R.id.btn_remove);
         edtTitle = findViewById(R.id.edt_title);
         edtWidth = findViewById(R.id.edt_width);
+        edtCorner = findViewById(R.id.edt_corner);
 
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(edtTitle.getText())) {
                     customRadioGroup.addRadioButton(edtTitle.getText().toString());
                     edtTitle.setText("");
-                }
-                else
+                } else
                     Toast.makeText(getApplicationContext(), "Please enter title", Toast.LENGTH_SHORT).show();
             }
         });
@@ -83,17 +84,15 @@ public class MainActivity extends AppCompatActivity {
 
     int getRandomNumber() {
         Random rand = new Random();
-
-// Obtain a number between [0 - 49].
-        int n = rand.nextInt(colors.size());
-
-// Add 1 to the result to get a number from the required range
-// (i.e., [1 - 50]).
-        return n;
+        return rand.nextInt(colors.size());
     }
 
     public void strokeWidth(View view) {
-        customRadioGroup.setStrokeWidth(Integer.parseInt(edtWidth.getText().toString()));
+        try {
+            customRadioGroup.setStrokeWidth(Integer.parseInt(edtWidth.getText().toString()));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -111,5 +110,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void background(View view) {
         customRadioGroup.setsBackgroundColor(getResources().getColor(colors.get(getRandomNumber())));
+    }
+
+    public void cornerRadius(View view) {
+        try {
+            customRadioGroup.setCornerRadius(Integer.parseInt(edtCorner.getText().toString()));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 }
