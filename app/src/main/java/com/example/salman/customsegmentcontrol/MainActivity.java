@@ -119,4 +119,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    public void padding(View view) {
+        customRadioGroup.setPadding(getResources().getDimensionPixelSize(R.dimen.test_radio_button_padding));
+    }
 }

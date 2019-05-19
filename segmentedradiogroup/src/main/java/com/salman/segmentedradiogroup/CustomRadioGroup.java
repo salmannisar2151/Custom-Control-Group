@@ -262,4 +262,9 @@ public class CustomRadioGroup extends RadioGroup {
             removeViewAt(position);
         }
     }
+
+    public void setPadding(int padding) {
+        this.padding = padding;
+        updateAllRadioButtonsBackground();
+    }
 }
