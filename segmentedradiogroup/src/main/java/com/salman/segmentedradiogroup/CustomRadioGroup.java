@@ -81,9 +81,9 @@ public class CustomRadioGroup extends RadioGroup {
         RadioButton radioButton = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button_item, null, false);
         LinearLayout.LayoutParams p;
         if (isScrollable) {
-            p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            p = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
         } else {
-            p = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+            p = new RadioGroup.LayoutParams(0, RadioGroup.LayoutParams.WRAP_CONTENT);
             p.weight = 1;
         }
         radioButton.setLayoutParams(p);
